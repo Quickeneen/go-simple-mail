@@ -329,7 +329,8 @@ func (email *Email) AddAddresses(header string, addresses ...string) *Email {
 		}
 
 		// add all addresses to the headers except for Bcc and Return-Path
-		if header != "Bcc" && header != "Return-Path" {
+		// removing Return-path from IF // 21-01-2021
+		if header != "Bcc" {
 			// add the address to the headers
 			email.headers.Add(header, address.String())
 		}
